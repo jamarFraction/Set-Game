@@ -15,14 +15,15 @@ struct Card  {
     private var color: UIColor.ColorName
     private var shape: Shape
     private var howMany: Multiplier
+    private var attributedString: NSAttributedString
     
 }
 
 enum Shade{
     
     case solid
-    case stripes
-    case dots
+    case shaded
+    case hollow
 }
 
 extension UIColor {

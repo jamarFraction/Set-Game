@@ -10,28 +10,40 @@ import UIKit
 
 class MainScreen: UIViewController {
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Set up for the game
+        GameSetup()
+        
+        
+    }
     
     //Container of card buttons, indexed from left to right, top to bottom
-    
-    var count = 0
-    
     @IBOutlet var CardFrame: [UIButton]!
     
     
     @IBAction func Pressed0(_ sender: UIButton) {
         
+        //
+        //
+        //Testing with NSAttributedString
         //Creating attributes for the title of the card
-        let stringTitle = "▲▲▲"
+        let stringTitle = "▲▲"
         
-        let attributes = [NSAttributedStringKey.font:UIFont(
-            name: "Georgia",
-            size: 12.0)!, NSAttributedStringKey.foregroundColor: UIColor.black,
-                          //NSAttributedStringKey.backgroundColor: UIColor.green
-                          ]
+        let attributes: [NSAttributedStringKey : Any] = [
+            
+            //using user sytem font
+            .font: UIFont.preferredFont(forTextStyle: .largeTitle),
+            
+            //shading the text
+            .foregroundColor: UIColor.red.withAlphaComponent(0.5),
+            
+            //positive width = hollow character
+            //negative = filled
+            .strokeWidth: 15.0
+            
+            ]
         //creating the attributed string
         let myString = NSAttributedString(string: stringTitle, attributes: attributes)
         
@@ -41,27 +53,24 @@ class MainScreen: UIViewController {
         //setting the attributed string to the card
         sender.setAttributedTitle(myString, for: UIControlState.normal)
         
+        //
+        //
+        //End testing with NSAttributedString
+        
     }
     
-    
-    
-    
-    
-//    @IBAction func Press() {
-//
-//        CardFrame[count].setTitle("\(count)", for: UIControlState.normal)
-//        count += 1
-//
-//        if count > 23{
-//
-//            count = 0
-//
-//            for card in CardFrame{
-//
-//                card.setTitle("", for: UIControlState.normal)
-//
-//            }
-//        }
+    func GameSetup(){
+        
+        //Initialize the board by setting the word wrap for proper character display
+        for card in CardFrame{
+            
+            card.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        }
+        
+        //TODO: Create the card set
+        
+        
+    }
     
     }
     
