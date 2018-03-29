@@ -3,3 +3,8 @@
 *.xcbkptlist
 *.xcuserstate
 .DS_Store
+*.pbxproj
+*.xcworkspacedata
+*.storyboard
+*.swift
+*.json
